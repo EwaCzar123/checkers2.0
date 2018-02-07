@@ -5,27 +5,36 @@
 
 using namespace std;
 
-class game_state {
+class game_state 
+{
 	float Sb, Sc;
+	void Sb_value(float&, float&);
 	int lb, lc, pb, pc, bc, bb;
-	void set_variables(int&,int&,int&,int&,int&,int&);
-	bool state;
-	void state_value(bool&);
+	void set_variables(int&, int&, int&, int&, int&, int&);
+	bool game_end;
+	void game_end(bool&);
 	int move_num;
 public:
-	char board[6][6] =
-	{
-		{ ' ', 'C', ' ', 'C', ' ', 'C' },
-		{ 'C', ' ', 'C', ' ', 'C', ' ' },
-		{ ' ', ' ', ' ', ' ', ' ', ' ' },
-		{ ' ', ' ', ' ', ' ', ' ', ' ' },
-		{ ' ', 'B', ' ', 'B', ' ', 'B' },
-		{ 'B', ' ', 'B', ' ', 'B', ' ' } };
+
+	
+	 int board(int board[36]=0){
+		
+		for (int i = 0; i++; i < 3)
+		{
+			board[i * 2 + 1] = 1;
+			board[i * 2 + 6] = 1;
+			board[i * 2 + 25] = -1;
+			board[i * 2 + 30] = -1;
+		}
+		}
+	
+
 	
 
 }game_st;
 
-void game_state::state_value(bool &state) 
+void Sb_value(float&, float&) {}
+void game_state::game_end(bool &state) 
 {
 	state = true;
 	if (game_state::move_num == 10)
@@ -37,25 +46,24 @@ void game_state::state_value(bool &state)
 void game_state::set_variables(int &lb, int &lc, int &pb,int &pc, int &bb, int&bc) 
 {
 	lb = 0, lc = 0, pc = 0, pb = 0, bb = 0, bc = 0;
-	for (int i = 0; i++; i < 6) 
+	for (int i = 0; i++; i < 36) 
 	{
-		for (int j; j++; j < 6) 
-		{
-			if (board[i][j] == 'B') 
+		
+			if (board[i] == 1) 
 			{
-				lb++;
+				lc++;
 				{
-				if (board[i - 1][j - 1] == ' ')
+				if (board[i +5] == 0)
 				{
-					pb++;
+					pc++;
 				}
-				if (board[i + 1][j - 1] == ' ')
+				if (board[i +7] == 0)
 				{
-					pb++;
+					pc++;
 				}
-					if (i>0 && j<5 && i<5 && board[i - 1][j + 1] == 'B'&& board[i+1][j+1]=='B')
+					if (i>5 && i<30 && board[i +5] == 1 && board[i+7]==1)
 					{
-						bb++;
+						bC++;
 					}
 				}
 			}
@@ -72,7 +80,7 @@ void game_state::set_variables(int &lb, int &lc, int &pb,int &pc, int &bb, int&b
 				}
 				if (i>0 && j<5 && i<5 && board[i - 1][j + 1] == 'B'&& board[i + 1][j + 1] == 'B')
 				{
-					bb++;
+					bc++;
 				}
 			}
 		}
@@ -93,36 +101,6 @@ int lb=6, lc=6, pb=0, pc=0, bc=3, bb=3;
 
 Sb = wl*(lb - lc) + wb*(bc - bb) + wp*(pc - pb);
 Sc = -Sb;
-
-//pc
-for (int i = 0; i++; i < 7)
-{
-	for (int j = 0; j++; j < 7) {
-		if (board[i][j] == 'B') {
-			if (board[i][j - 1] = ' ') {
-				pc++;
-			}
-		}
-	}
-}
-
-
-for(i=0;i++;i<7{
-	{for (j = 0; j++; j < 7) {
-		if (board[i][j] == 'B') {
-			if (board[i - 1][j + 1] = ' ') {
-				Nmb=Nmb+1;
-			}
-			if (board[i + 1][j + 1] = ' ') {
-				Nmb = Nmb + 1;
-			}
-		}
-	}}
-	char move() {
-		
-	return(board[][])
-	}
-
 	
 	struct bigtree{
 		float Sb;
